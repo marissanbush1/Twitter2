@@ -1,4 +1,4 @@
-//
+//j JU 1
 //  User.swift
 //  twitter_alamofire_demo
 //
@@ -14,6 +14,9 @@ class User {
     var name: String
     var tweetUsername: String
     var imageURL: String
+    var followers: Int
+    var following: Int
+    var headerURL: String
     
     private static var _current: User?
     
@@ -47,6 +50,10 @@ class User {
         name = dictionary["name"] as! String
         tweetUsername = dictionary["screen_name"] as! String
         imageURL = dictionary["profile_image_url_https"] as! String
+        imageURL = String((imageURL.characters.dropLast(11))) + ".jpg"
+        followers = dictionary["followers_count"] as! Int
+        following = dictionary["friends_count"] as! Int
+        headerURL = dictionary["profile_banner_url"] as! String
         self.userDictionary = dictionary
     }
     

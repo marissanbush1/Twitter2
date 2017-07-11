@@ -42,6 +42,7 @@ class TimelineViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
     
+    
     func refreshControlAction(_ refreshControl: UIRefreshControl) {
         
         // ... Create the URLRequest `myRequest` ...
@@ -85,17 +86,29 @@ class TimelineViewController: UIViewController, UITableViewDelegate, UITableView
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ComposeTweet"{
             let destination = segue.destination as! ComposeViewController
-            destination.delegate = self
+           destination.delegate = self
+        }else if segue.identifier == "DetailView"{
+            let cell = sender as! UITableViewCell
+            if let indexPath = tableView.indexPath(for: cell){
+                let tweet = tweets[indexPath.row]
+                let destination = segue.destination as! DetailTweetViewController
+                destination.tweet = tweet
+            }
+        //    destination.delegate = self
         }
+        
     }
-    /*
-     // MARK: - Navigation
+    
+    /* // MARK: - Navigation
      
      // In a storyboard-based application, you will often want to do a little preparation before navigation
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-      Get the new view controller using segue.destinationViewController.
-      Pass the selected object to the new view controller.
+     // Get the new view controller using segue.destinationViewController.
+        
+        let destination = segue.destination
+        
+      //Pass the selected object to the new view controller.
      }
-     */
+ */
     
 }

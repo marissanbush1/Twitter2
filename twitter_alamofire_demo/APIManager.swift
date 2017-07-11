@@ -168,7 +168,7 @@ class APIManager: SessionManager {
     
     // MARK: TODO: Retweet
     
-    func retweet(with tweet: Tweet, completion: @escaping(Tweet?, Error?) -> ()) {
+    func retweet(_ tweet: Tweet, completion: @escaping(Tweet?, Error?) -> ()) {
         let parameters = ["id": tweet.id]
         
         let id : Int64 = tweet.id
@@ -188,7 +188,7 @@ class APIManager: SessionManager {
     }
     
     // MARK: TODO: Un-Retweet
-    func didUnRetweet(with tweet: Tweet, completion: @escaping(Tweet?, Error?) -> ()) {
+    func didUnRetweet(_ tweet: Tweet, completion: @escaping(Tweet?, Error?) -> ()) {
         let parameters = ["id": tweet.id]
         
         let id : Int64 = tweet.id
